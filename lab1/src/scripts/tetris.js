@@ -1,7 +1,14 @@
+//todo
+// красивый логин
+// следующая фигура
+// рестарт
+// рекроды
+// пауза
+
+
 // получаем доступ к холсту
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
-// size of 1 el
 const grid = 32; //px
 
 // массив с последовательностями фигур, на старте — пустой
@@ -14,7 +21,11 @@ for (let row = -2; row<20; row++){
         playfield[row][col] = 0;
     }
 }
+
 let difficult = 35;
+let score = 0;
+let lvl = 1;
+let koef = 0.9;
 // задаем формы
 const tetrominos = {
     'I':[
@@ -80,13 +91,12 @@ let gameOver = false;
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 //создаем псевдослучайную очередь из фигур, каждая по одному разу???
 function  generateSequence(){
     const sequence = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
-    // const sequence = ['O'];
+    // const sequence = ['I'];
     while (sequence.length){
          let rand = getRandomInt(0, sequence.length-1);
          let name = sequence.splice(rand,1)[0];
@@ -150,7 +160,7 @@ function placeTetromino(){
         for(let col  = 0; col < tetromino.matrix[row].length; col++){
             if (tetromino.matrix[row][col]) {
                 // если край фигуры выходит за границы - game over
-                if(tetromino.row + row < 0)
+                if(tetromino.row + row <= 0)
                     return  showGameOver();
                 // если все в порядке - записываем в массив поля нашу фигуру
                 playfield[tetromino.row+row][tetromino.col + col] = tetromino.name;
@@ -158,21 +168,36 @@ function placeTetromino(){
         }
     }
     // удаление заполненных рядов снизу вверх
+    let countOfRows = 0;
     for(let row = playfield.length-1; row >= 0;){
         // если ряд заполнен
         if (playfield[row].every(cell => !!cell)) {
-
             // очищаем его и опускаем всё вниз на одну клетку
             for (let r = row; r >= 0; r--) {
                 for (let c = 0; c < playfield[r].length; c++) {
                     playfield[r][c] = playfield[r-1][c];
                 }
             }
+            countOfRows++;
         }
         else {
             // переходим к следующему ряду
             row--;
         }
+    }
+    switch (countOfRows){
+        case 1:
+            score+=100;
+            break;
+        case 2:
+            score+=300;
+            break;
+        case 3:
+            score+=700;
+            break;
+        case 4:
+            score+=1500;
+            break;
     }
     // получаем следующую фигуру
     tetromino = getNextTetromino();
@@ -187,7 +212,7 @@ function showGameOver(){
     // рисуем чёрный прямоугольник посередине поля
     context.fillStyle = 'black';
     context.globalAlpha = 0.75;
-    context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);
+    context.fillRect(0, canvas.height / 2 - 30, canvas.width, 90);
     // пишем надпись белым моноширинным шрифтом по центру
     context.globalAlpha = 1;
     context.fillStyle = 'white';
@@ -195,6 +220,25 @@ function showGameOver(){
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
+    context.font = '18px monospace';
+    context.fillText('\nSCORE:'+ score, canvas.width / 2, canvas.height /2 + 40);
+
+    let username = localStorage['tetris.username'];
+    let player = {
+        name: username,
+        score: score
+    }
+    let records
+    try {
+        records = JSON.parse(localStorage["tetris.records"]);
+    }catch (e) {
+        records = [];
+    }
+    records.push(player);
+    localStorage["tetris.records"] = JSON.stringify(records);
+    setTimeout(()=>{
+        window.location = "records.html";
+    }, 5000);
 }
 
 //обработка нажатий клавиш
@@ -241,6 +285,12 @@ document.addEventListener('keydown', function (e){
 
 //main loop
 function loop(){
+    if (score > 500 * lvl){
+        lvl++;
+        difficult = Math.floor(difficult*koef);
+    }
+    if (lvl%10 === 0)
+        koef-=0.05;
     // начинаем анимацию
     rAF = requestAnimationFrame(loop);
     // очищаем холст
