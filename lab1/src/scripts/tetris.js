@@ -173,7 +173,7 @@ function placeTetromino(){
             }
         }
     }
-    score+=25;
+    score+=5;
     // удаление заполненных рядов снизу вверх
     let countOfRows = 0;
     for(let row = playfield.length-1; row >= 0;){

@@ -19,19 +19,3 @@ for (let one of records){
     table.appendChild(row);
     i++
 }
-
-let row = document.createElement('tr');
-let currentResult = document.createElement('td');
-currentResult.colSpan = 2;
-currentResult.innerHTML = '<b>Ваш результат</b>';
-row.appendChild(currentResult);
-table.appendChild(row);
-
-row = document.createElement('tr');
-let name = document.createElement('td');
-let score = document.createElement('td');
-name.textContent = lastPlayer.name;
-score.textContent = lastPlayer.score;
-row.appendChild(name);
-row.appendChild(score);
-table.appendChild(row);
