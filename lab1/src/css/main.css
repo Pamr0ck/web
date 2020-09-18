@@ -1,0 +1,51 @@
+html,body{
+    height: 100%;
+    margin: 0;
+}
+/*делаем чёрный фон и выравниваем всё по центру*/
+body {
+    /*background: black;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+/*толщина холста — 1 пиксель, белый цвет*/
+
+.game{
+    z-index: 4;
+    position: relative;
+}
+.playfield{
+    background: rgba(62, 62, 62, 0.7);
+    border: 2px solid #262626;
+    left: 0;
+    top: 0;
+}
+.limiter{
+    z-index: 3;
+    /*background: rgba(62, 62, 62, 0.7);*/
+}
+.info{
+    position: relative;
+    width: 320px;
+    height: 644px;
+    border: 2px solid #262626;
+}
+.next{
+    /*border: 2px solid black;*/
+    padding: 0;
+    margin-left: 2px;
+    left: 0;
+    background: rgba(170, 170, 170, 0.7);
+    /*padding-bottom: 10px;*/
+    position: relative;
+}
+.status{
+    /*margin-top: 10px;*/
+    padding: 0;
+    width: 316px;
+    height: 476px;
+    border: 2px solid black;
+    background: rgba(170, 170, 170, 0.7);
+    position: relative;
+}

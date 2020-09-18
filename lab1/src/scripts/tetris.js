@@ -4,7 +4,7 @@
 // рестарт
 // рекроды
 // пауза
-
+// счет за фигуры
 
 // получаем доступ к холсту
 const canvas = document.getElementById('game');
@@ -236,9 +236,9 @@ function showGameOver(){
     }
     records.push(player);
     localStorage["tetris.records"] = JSON.stringify(records);
-    setTimeout(()=>{
-        window.location = "records.html";
-    }, 5000);
+    // setTimeout(()=>{
+    //     window.location = "records.html";
+    // }, 5000);
 }
 
 //обработка нажатий клавиш
@@ -302,7 +302,12 @@ function loop(){
                 const name = playfield[row][col];
                 context.fillStyle = colors[name];
                 //рисуем всё на один пиксель меньше, чтобы получился эффект «в клетку»
-                context.fillRect(col * grid, row * grid, grid-1, grid-1);
+                context.fillRect(col * grid, row * grid, grid-2, grid-2);
+            }
+            else{
+                context.fillStyle = '#202020';
+                context.fillRect(col * grid, row * grid, grid-2, grid-2);
+
             }
         }
     }

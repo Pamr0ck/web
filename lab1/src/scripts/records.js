@@ -1,3 +1,4 @@
+// todo list
 const table = document.getElementById('records');
 let records = JSON.parse(localStorage["tetris.records"]);
 let lastPlayer = records[records.length-1];
