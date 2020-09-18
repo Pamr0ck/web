@@ -1,23 +1,25 @@
 //todo
-// красивый логин
-// следующая фигура
 // рестарт
 // рекроды
 // пауза
 // счет за фигуры
+// gitignore
 
 // получаем доступ к холсту
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
+const nextCanvas = document.getElementById('next');
+const nextContext = nextCanvas.getContext('2d');
 const grid = 32; //px
-
+const ROW = 20;
+const COL = 10;
 // массив с последовательностями фигур, на старте — пустой
 let tetrominoSequence = [];
 let playfield = [];  // размер поля — 10 на 20, и несколько строк ещё находится за видимой областью
 // заполняем пустыми
-for (let row = -2; row<20; row++){
+for (let row = -2; row < ROW; row++){
     playfield[row] = [];
-    for (let col = 0; col < 10; col++){
+    for (let col = 0; col < COL; col++){
         playfield[row][col] = 0;
     }
 }
@@ -26,6 +28,7 @@ let difficult = 35;
 let score = 0;
 let lvl = 1;
 let koef = 0.9;
+let lines = 0;
 // задаем формы
 const tetrominos = {
     'I':[
@@ -170,6 +173,7 @@ function placeTetromino(){
             }
         }
     }
+    score+=25;
     // удаление заполненных рядов снизу вверх
     let countOfRows = 0;
     for(let row = playfield.length-1; row >= 0;){
@@ -182,6 +186,7 @@ function placeTetromino(){
                 }
             }
             countOfRows++;
+            lines++;
         }
         else {
             // переходим к следующему ряду
@@ -240,9 +245,9 @@ function showGameOver(){
     }
     records.push(player);
     localStorage["tetris.records"] = JSON.stringify(records);
-    // setTimeout(()=>{
-    //     window.location = "records.html";
-    // }, 5000);
+    setTimeout(()=>{
+        window.location = "records.html";
+    }, 3000);
 }
 
 //обработка нажатий клавиш
@@ -286,22 +291,43 @@ document.addEventListener('keydown', function (e){
         currTetromino.row = row;
     }
 })
+//show next figure
+function showNext(){
+    nextContext.clearRect(0,0,nextCanvas.width, nextCanvas.height);
+    for (let row = 0; row < 5; row++){
+        for (let col = 0; col < 8; col++){
+            nextContext.fillStyle = '#202020';
+            nextContext.fillRect(col * grid, row * grid, grid-2, grid-2);
+        }
+    }
+    nextContext.fillStyle = colors[nextTetromino.name];
+    for (let row = 0; row < nextTetromino.matrix.length; row++){
+        for (let col = 0; col < nextTetromino.matrix[row].length; col++){
+            if (nextTetromino.matrix[row][col]){
+                nextContext.fillRect((nextTetromino.col + col-1)*grid, (nextTetromino.row + row+3)* grid, grid - 2, grid - 2 );
+            }
+        }
+    }
+}
 
 //main loop
 function loop(){
     if (score > 500 * lvl){
         lvl++;
+        koef-=0.005;
         difficult = Math.floor(difficult*koef);
     }
-    if (lvl%10 === 0)
-        koef-=0.05;
+    // if (lvl%10 === 0)
+    //     koef-=0.05;
     // начинаем анимацию
     rAF = requestAnimationFrame(loop);
     // очищаем холст
     context.clearRect(0,0,canvas.width, canvas.height);
+    showNext();
+    updateInfo();
     // рисуем игровое поле с учетом фигур
-    for (let row = 0; row < 20; row++){
-        for(let col = 0; col < 10; col++){
+    for (let row = 0; row < ROW; row++){
+        for(let col = 0; col < COL; col++){
             if(playfield[row][col]){
                 const name = playfield[row][col];
                 context.fillStyle = colors[name];
@@ -325,6 +351,7 @@ function loop(){
             if (!isValidMove(currTetromino.matrix, currTetromino.row, currTetromino.col)){
                 currTetromino.row--;
                 placeTetromino();
+
             }
         }
         // красим фигуру
@@ -334,11 +361,22 @@ function loop(){
             for (let col = 0; col < currTetromino.matrix[row].length; col++){
                 if (currTetromino.matrix[row][col]){
                     // эффект клеток
-                    context.fillRect((currTetromino.col + col) * grid, (currTetromino.row + row) * grid, grid-1, grid -1);
+                    context.fillRect((currTetromino.col + col) * grid, (currTetromino.row + row) * grid, grid-2, grid -2);
                 }
             }
         }
     }
 }
+// info
+function updateInfo(){
+    let scoreDIV = document.getElementById('number');
+    scoreDIV.innerHTML = score;
+    let lvlDIV = document.getElementById('lvl');
+    lvlDIV.innerHTML = lvl;
+    let linesDIV = document.getElementById('lines');
+    linesDIV.innerHTML = lines;
+
+}
+
 //start
 rAF = requestAnimationFrame(loop);

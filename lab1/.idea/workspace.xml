@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3b2cd7e9-c532-4740-b7a9-0c16e74b8d65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/tetris.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/tetris.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +87,7 @@
       <workItem from="1600115282442" duration="9152000" />
       <workItem from="1600254460180" duration="1894000" />
       <workItem from="1600429246386" duration="3758000" />
-      <workItem from="1600446676775" duration="2847000" />
+      <workItem from="1600446676775" duration="10972000" />
     </task>
     <servers />
   </component>
@@ -103,9 +107,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600000472008">
+    <state x="0" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600452519010">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="0" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1600452519010" />
     <state x="0" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1600000472008" />
     <state x="1546" y="311" width="374" height="491" key="FileChooserDialogImpl" timestamp="1600115379141">
       <screen x="0" y="27" width="1920" height="1053" />

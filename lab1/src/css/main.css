@@ -27,25 +27,46 @@ body {
 }
 .info{
     position: relative;
-    width: 320px;
+    width: 256px;
     height: 644px;
-    border: 2px solid #262626;
+    /*border: 2px solid #262626;*/
 }
 .next{
     /*border: 2px solid black;*/
+    z-index: 10;
+    position: relative;
     padding: 0;
     margin-left: 2px;
     left: 0;
     background: rgba(170, 170, 170, 0.7);
+    /*background: rgba(62, 62, 62, 0.7);*/
+
     /*padding-bottom: 10px;*/
-    position: relative;
+    /*border: 2px solid #262626;*/
+}
+.background{
+    background: rgba(170, 170, 170, 0.7);
 }
 .status{
     /*margin-top: 10px;*/
     padding: 0;
-    width: 316px;
+    width: 252px;
     height: 476px;
     border: 2px solid black;
     background: rgba(170, 170, 170, 0.7);
     position: relative;
+
+}
+.score, .lvl, .lines{
+    width: 100%;
+    height: 155px;
+    font-size: 4em;
+    font-family: fantasy;
+    text-align: center;
+    color: #1f1f1f;
+    text-shadow:2px 5px darkgray;
+    border: 2px solid black;
+    background: rgba(128, 128, 128, 0.7);
+
+
 }
