@@ -247,7 +247,7 @@ function showGameOver(){
     localStorage["tetris.records"] = JSON.stringify(records);
     setTimeout(()=>{
         window.location = "records.html";
-    }, 3000);
+    }, 0);
 }
 
 //обработка нажатий клавиш

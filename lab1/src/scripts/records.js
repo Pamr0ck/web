@@ -1,7 +1,13 @@
 // todo list
+function goToGame() {
+    console.log("go to game");
+    setTimeout(()=>{
+        window.location = "main.html";
+    }, 0);
+
+}
 const table = document.getElementById('records');
 let records = JSON.parse(localStorage["tetris.records"]);
-let lastPlayer = records[records.length-1];
 records.sort((a,b)=>{
     return b.score-a.score;
 })
@@ -19,3 +25,4 @@ for (let one of records){
     table.appendChild(row);
     i++
 }
+

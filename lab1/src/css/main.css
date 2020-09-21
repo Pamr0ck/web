@@ -60,15 +60,20 @@ body {
 
 }
 .score, .lvl, .lines{
-    width: 100%;
+    display: block;
+
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    width: auto;
+
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
     height: 155px;
     font-size: 4em;
-    font-family: fantasy;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, sans-serif;
     text-align: center;
-    color:  #7aff1b;
+    color: #393b39;
     /*text-shadow:2px 5px darkgray;*/
     border: 2px solid black;
     background: rgba(128, 128, 128, 0.7);
-
-
 }
