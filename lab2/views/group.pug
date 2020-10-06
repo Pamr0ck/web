@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        link(href='/public/css/w3.css', rel='stylesheet')
+        meta(charset="utf-8")
+        title= name
+    body
+        h1= name
+        ul
+            - for(var key in groups)
+                - value=groups[key]
+                li
+                    a(href=value)=value
