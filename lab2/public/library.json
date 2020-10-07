@@ -1,0 +1,14 @@
+{
+  "maxId": 1,
+  "books": [
+    {
+      "id": 1,
+      "author": "Tolkin",
+      "name": "master of rings",
+      "publishedDate": "2020-09-20",
+      "isInLibrary": "Yes",
+      "readerName": "",
+      "expectedDate": ""
+    }
+  ]
+}

@@ -1,7 +1,31 @@
 /* W3.CSS 4.13 June 2019 by Jan Egil and Borge Refsnes */
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
-html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin: 0}
+#wallpaper{background-image: url('../img/lib.jpg');width: 100%;
+    height: 100%;position: fixed;
+
+    top: 0;
+    left: 0;
+    display: flex;
+    overflow: auto;
+    background-size: cover;
+}
+
+#wallpaper:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(212, 212, 212, 0.2);
+    z-index: 2;
+}
+
+#limiter{z-index: 3; padding: 10px}
+
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section{display:block}summary{display:list-item}
 audio,canvas,progress,video{display:inline-block}progress{vertical-align:baseline}
 audio:not([controls]){display:none;height:0}[hidden],template{display:none}

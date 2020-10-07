@@ -1,0 +1,102 @@
+doctype html
+html
+    head
+        link(href='/public/css/w3.css', rel='stylesheet')
+        meta(charset="utf-8")
+        title= name
+    body(class='w3-container')
+        //#wallpaper
+        //    #limiter
+        //        #header(class='w3-container w3-border-top w3-margin-16 w3-light-grey')
+        h1= name
+        // toolbar
+        div(class="w3-container w3-border-top w3-margin-16 w3-light-grey")
+            button(onclick="document.getElementById('id01').style.display='block'"
+                class="w3-button w3-green w3-margin") Добавить книгу
+            button(
+                id='inLibrary'
+                onclick="inLibraryOnly()"
+                class="w3-button w3-yellow w3-margin") Только в наличии
+            button(
+                onclick="document.getElementById('id02').style.display='block'"
+                class="w3-button w3-orange w3-margin") Должны вернуть до даты
+        //ul
+        //    - for(var key in groups)
+        //    - value=groups[key]
+        //    li
+        //        a(href=value)=value
+
+        table(class="w3-table w3-bordered w3-hoverable")
+            tr(class='w3-light-grey')
+                th id
+                th Автор
+                th Название
+                th Дата публикации
+                th В библиотке?
+                th Имя читателя
+                th Преполагаемая дата возврата
+            tbody(id='rows')
+                each val in books
+                    tr(class='row' data-href=`/books/${val.id}`)
+                        th= val.id
+                        th= val.author
+                        th= val.name
+                        th= val.publishedDate
+                        th= val.isInLibrary
+                        th= val.readerName
+                        th= val.expectedDate
+
+        div(id="id01" class="w3-modal")
+            div(class="w3-modal-content" style="max-width:500px")
+                div(class="w3-container")
+                    h3(class= "w3-margin-left") Добавить новую книгу
+                    div(id='addForm' class='w3-container')
+                        label
+                            b Автор
+                        input(class="w3-input w3-border w3-margin-bottom" placeholder='Автор' name='author')
+
+                        label
+                            b Название
+                        input(class="w3-input w3-border w3-margin-bottom" placeholder='Название' name='name')
+
+                        label
+                            b Дата публикации
+                        input(class="w3-input w3-border w3-margin-bottom" type='date' name='publishedDate')
+                        //br
+                        //label В библиотеке?
+                        //input(type='checkbox' checked name='isInLibrary')
+                        //br
+                        //input(placeholder='Кто взял книгу?' name='readerName')
+                        //br
+                        //label Дата возвращения книги
+                        //input(type='date' name='expectedDate')
+
+                        button(
+                            onclick='addBook()'
+                            type='button'
+                            class='w3-button w3-green w3-margin-bottom w3-bar') Добавить книгу
+
+                div(class="w3-container w3-border-top w3-padding-16 w3-light-grey")
+                    button(
+                        onclick="document.getElementById('id01').style.display='none'"
+                        type="button" class="w3-button w3-red  w3-bar") Cancel
+
+
+        div(id="id02" class="w3-modal")
+            div(class="w3-modal-content" style="max-width:300px")
+                div(class="w3-container")
+                    h3(class= "w3-margin-left") Должны вернуть книгу до этой даты
+                    div(id='filterDateForm' class='w3-container')
+                        input(class="w3-input w3-border w3-margin-bottom" type='date' name='expectedDate')
+
+                        button(
+                            onclick='filterDateBooks()'
+                            type='button'
+                            class='w3-button w3-green w3-margin-bottom w3-bar') Показать
+
+                div(class="w3-container w3-border-top w3-padding-16 w3-light-grey")
+                    button(
+                        onclick="document.getElementById('id02').style.display='none'"
+                        type="button" class="w3-button w3-red w3-bar" ) Cancel
+
+        script(src='/public/scripts/booksListener.js')
