@@ -1,5 +1,7 @@
 const gulp = require("gulp4");
-const pug = require('gulp-pug');
+const pug2html = require('./gulp/tasks/pug2html')
+module.exports.start = gulp.series(pug2html)
+
 const del = require('del');
 const paths = {
     pugPaintings: {
@@ -7,14 +9,3 @@ const paths = {
         dest: 'build/html/'
     }
 }
-
-const paintingsJSON = require("./media/json/paints.json");
-function paintings() {
-    return gulp.src(paths.pugPaintings.src)
-        .pipe(pug({
-            locals: {paint: paintingsJSON.paints},
-            verbose: true
-        }))
-        .pipe(gulp.dest(paths.pugPaintings.dest));
-}
-gulp.task("default",paintings());
