@@ -9,7 +9,7 @@
       "price": "15000",
       "minStep": "9999",
       "maxStep": "99999",
-      "src": "/public/images/img1.jpg"
+      "src": "media/img/img1.jpg"
     }
   ]
 }

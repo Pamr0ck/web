@@ -9,3 +9,13 @@ html
             th.mainMenuButt Аукцион
         div
             ul#paintings
+                each element in paint
+                    li#element
+                        img(src=element.src)
+                        p
+                            =element.author
+                            | &nbsp;-&nbsp;
+                            =element.name
+                        p.invisibility
+                            =element.id
+
