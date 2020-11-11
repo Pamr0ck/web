@@ -1,0 +1,143 @@
+html
+    head
+        meta(charset='utf-8')
+        title Карточка книги
+        link(rel="stylesheet" href="/public/css/w3.css")
+    body(class='w3-container')
+        h1 Книга
+        table(
+            id='table1'
+            class="w3-table w3-striped w3-bordered")
+            tr
+                th Автор
+                th Название
+                th Дата публикации
+                th В библиотеке?
+                th Имя читателя
+                th Предполагаемая дата возврата
+            tbody
+                tr
+                    th= book.author
+                    th= book.name
+                    th= book.publishedDate
+                    th= book.isInLibrary
+                    th= book.readerName
+                    th= book.expectedDate
+
+        br
+        div(class="w3-container w3-border-top w3-margin-16 w3-light-grey")
+            button(
+                onclick='window.location = "/books/";'
+                class="w3-button w3-yellow w3-margin") К списку книг
+            button(
+                onclick="initEdit()"
+                class="w3-button w3-blue w3-margin") Изменить книгу
+            button(
+                onclick="document.getElementById('delete').style.display='block'"
+                class="w3-button w3-red w3-margin") Удалить книгу
+            button(
+                onclick="initGive()"
+                class="w3-button w3-green w3-margin") Выдать книгу
+            button(
+                onclick="initReturn()"
+                class="w3-button w3-orange w3-margin") Вернуть книгу
+
+        div(id="edit" class="w3-modal")
+            div(class="w3-modal-content" style="max-width:500px")
+                div(class="w3-container")
+                    h3 Изменить книгу
+                    //form(action='' method='put' class='w3-container')
+
+                    div(id='editForm' class='w3-container')
+                        label
+                            b Автор
+                        input(class="w3-input w3-border w3-margin-bottom"
+                            value= book.author
+                            name='author')
+
+                        label
+                            b Название
+                        input(class="w3-input w3-border w3-margin-bottom"
+                            value= book.name
+                            name='name')
+
+                        label
+                            b Дата публикации
+                        input(class="w3-input w3-border w3-margin-bottom"
+                            type='date'
+                            value= book.publishedDate
+                            name='publishedDate')
+
+                        button(
+                            onclick="editBook()"
+                            type='button'
+                            class='w3-button w3-green w3-margin') Изменить книгу
+                        //input(type='submit' class='w3-button w3-green' value='Изменить книгу')
+
+                div(class="w3-container w3-border-top w3-padding-16 w3-light-grey")
+                    button(
+                        onclick="document.getElementById('edit').style.display='none'"
+                        type="button" class="w3-button w3-red") Cancel
+
+
+        div(id="give" class="w3-modal")
+            div(class="w3-modal-content" style="max-width:500px")
+                div(class="w3-container")
+                    h3 Выдать книгу
+                    div(id='giveForm' class='w3-container')
+                        label
+                            b Читатель
+                        input(class="w3-input w3-border w3-margin-bottom" placeholder='Читатель' name='readerName')
+
+                        label
+                            b Предполагаемая дата возврата
+                        input(class="w3-input w3-border w3-margin-bottom" type='date' name='expectedDate')
+
+                        button(
+                            onclick="giveBook()"
+                            type='button'
+                            class='w3-button w3-green w3-margin') Выдать книгу
+
+                div(class="w3-container w3-border-top w3-padding-16 w3-light-grey")
+                    button(
+                        onclick="document.getElementById('give').style.display='none'"
+                        type="button" class="w3-button w3-red") Cancel
+
+
+        div(id="return" class="w3-modal")
+            div(class="w3-modal-content" style="max-width:520px")
+                div(class="w3-container")
+                    h3 Вы правда желаете вернуть книгу?
+
+                div(class="w3-container w3-border-top w3-margin" style='display: flex;')
+
+                    div(id='returnForm' class="w3-container")
+                        button(
+                            onclick="returnBook()"
+                            type='button'
+                            class='w3-button w3-green w3-margin') Да, я хочу вернуть книгу
+                        button(
+                            onclick="document.getElementById('return').style.display='none'"
+                            type="button" class="w3-button w3-red w3-margin") Нет, я передумал
+
+
+        div(id="delete" class="w3-modal")
+            div(class="w3-modal-content" style="max-width:520px")
+                div(class="w3-container")
+                    h3 Вы правда желаете удалить книгу?
+
+                div(class="w3-container w3-border-top w3-margin" style='display: flex;')
+
+                    button(
+                        onclick="deleteBook()"
+                        type='button'
+                        class='w3-button w3-red w3-margin') Да, я хочу удалить книгу
+                    button(
+                        onclick="document.getElementById('delete').style.display='none'"
+                        type="button"
+                        class="w3-button w3-green w3-margin") Нет, я передумал
+
+
+
+
+        script(src='/public/scripts/bookListener.js')
