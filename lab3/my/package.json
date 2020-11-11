@@ -1,0 +1,19 @@
+{
+  "name": "web_3rd_lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pamr0ck/web.git"
+  },
+  "author": "pamr0ck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pamr0ck/web/issues"
+  },
+  "homepage": "https://github.com/Pamr0ck/web#readme"
+}
