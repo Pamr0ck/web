@@ -40,6 +40,6 @@ server.listen(8443, (err) => {
     if (err) {
         console.log("Error was occured at server start");
     } else {
-        console.log(`Server is running on https protocol\nServer is started at port 8443`);
+        console.log(`Server is running on https protocol\nServer is started at port 8443\n https://localhost:8443/`);
     }
 });
