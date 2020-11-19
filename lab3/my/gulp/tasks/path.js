@@ -6,6 +6,10 @@ const path = {
     less: {
         src: 'dev/styles/*.less',
         dest: 'build/css/'
+    },
+    script: {
+        src: 'dev/scripts/*.js',
+        dest: 'build/scripts/'
     }
 }
 module.exports= path;

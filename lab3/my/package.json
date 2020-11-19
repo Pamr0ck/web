@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/Pamr0ck/web#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-loader": "^8.2.1",
     "browser-sync": "^2.26.13",
     "cookie-parser": "^1.4.5",
     "del": "^6.0.0",

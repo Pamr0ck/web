@@ -2,21 +2,50 @@ html
     head
         meta(charset="utf-8")
         title Аукцион картин
-        link(rel="stylesheet", type="text/css", href="/public/styles/paintings.css")
+        link(rel="stylesheet", type="text/css", href="build/css/styles.css")
+        link(rel="stylesheet", type="text/css", href="/build/css/paintings.css")
     body
         table#mainMenu
             tr
             th.mainMenuButt Участники
             th.mainMenuButt Аукцион
-        div
+        div#paints
             ul#paintings
                 each element in paint
                     li#element
                         img(src=element.src)
-                        p
-                            =element.author
-                            | &nbsp;-&nbsp;
+                        p.artist
+                            =element.artist
+                            //| &nbsp;-&nbsp;
+                        p.name
                             =element.name
                         p.invisibility
                             =element.id
+        div#shadowInfo
+            div#moduleInfo
+                img#imgInfo(src="/media/img/img1.jpg")
+                div
+                    input.infoInput#infoArtist(type="text", placeholder="Автор")
+                    p
+                    input.infoInput#infoName(type="text", placeholder="Название")
+                    p
+                    input.infoInput#infoDes(type="text", placeholder="Описание")
+                    p Начальная цена:
+                    input.infoInput#infoPrice(type="text", placeholder="Начальная цена")
+                    p Минимальный шаг аукциона:
+                    input.infoInput#infoMin(type="text", placeholder="Минимальный шаг аукциона")
+                    p Максимальный шаг аукциона:
+                    input.infoInput#infoMax(type="text", placeholder="Максимальный шаг аукциона")
+                    p Участвует ли в аукционе?
+                    p
+                        input(type="radio", name="activ", value="yes")
+                        | Да
+                    p
+                        input(type="radio", name="activ", value="no")
+                        | Нет
+                    p
+                    input.modulButton#changePaint(type="submit", value="Сохранить")
+                    input#modulInfoClose(type="submit", value="Назад")
 
+        script(src='/build/scripts/jquery.js')
+        script(src='/build/scripts/paintingListener.js')
