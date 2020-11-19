@@ -19,12 +19,14 @@ html
                             //| &nbsp;-&nbsp;
                         p.name
                             =element.name
+                        p.year
+                            =element.when
                         p.invisibility
                             =element.id
         div#shadowInfo
             div#modulInfo
                 img#imgInfo(src="/media/img/img1.jpg")
-                div
+                div#divmoduleInfo
                     input.infoInput#infoArtist(type="text", placeholder="Автор")
                     p
                     input.infoInput#infoName(type="text", placeholder="Название")

@@ -1,0 +1,54 @@
+html
+    head
+        meta(charset="utf-8")
+        link(rel="stylesheet", type="text/css", href="/public/styles/styles.css")
+        link(rel="stylesheet", type="text/css", href="/public/styles/partners.css")
+        link(rel="shortcut icon", href="/public/images/favicon.png", type="image/png")
+        title Аукцион картин
+    body
+        table#mainMenu
+            tr
+                th.mainMenuButton Картины
+                th.mainMenuButton Аукцион
+                th.mainMenuButton Добавить участника
+        table#info
+            tr#infoTitle
+                td Участник
+                td Доступные средства
+                td(colspan="2") Действия
+            each element in participants
+                tr
+                    td
+                        =element.name
+                    td
+                        =element.money
+                    td.infoButton.changeButton Изменить запас средств
+                    td.infoButton.delButton Удалить участника
+        div#shadowCreate
+            div#modulCreate
+                p
+                input#name(type="text", placeholder="Имя участника")
+                p
+                input#money(type="text", placeholder="Запас средств")
+                p
+                input.modulButton#createMan(type="submit", value="Добавить")
+                p
+                input#modulCreateClose(type="submit", value="Назад")
+        div#shadowMoney
+            div#modulMoney
+                p
+                input#newMoney(type="text", placeholder="Запас средств")
+                p
+                input.modulButton#changeMoney(type="submit", value="Изменить")
+                p
+                input#modulMoneyClose(type="submit", value="Назад")
+                div.invisibility#targetButton
+        div#shadowIsDelete
+            div#modulIsDelete
+                p#nameDelete
+                input.modulButton#sayYes(type="submit", value="Да")
+                input.modulButton#modulIsDeleteClose(type="submit", value="Нет")
+                div.invisibility#targetTR
+
+        script(src='/public/scripts/jquery.js')
+        script(src='/public/scripts/partnersListener.js')
