@@ -2,7 +2,7 @@ html
     head
         meta(charset="utf-8")
         title Аукцион картин
-        link(rel="stylesheet", type="text/css", href="build/css/styles.css")
+        link(rel="stylesheet", type="text/css", href="/build/css/styles.css")
         link(rel="stylesheet", type="text/css", href="/build/css/paintings.css")
     body
         table#mainMenu
@@ -13,7 +13,7 @@ html
             ul#paintings
                 each element in paint
                     li#element
-                        img(src=element.src)
+                        img#imgPaintings(src=element.src)
                         p.artist
                             =element.artist
                             //| &nbsp;-&nbsp;
@@ -22,7 +22,7 @@ html
                         p.invisibility
                             =element.id
         div#shadowInfo
-            div#moduleInfo
+            div#modulInfo
                 img#imgInfo(src="/media/img/img1.jpg")
                 div
                     input.infoInput#infoArtist(type="text", placeholder="Автор")
