@@ -26,3 +26,5 @@ $("#changePaint").on("click", () => {
 $("#modulInfoClose").on("click", () => {$("#shadowInfo").css("display", "none");});
 
 $(".mainMenuButt").first().on("click", () => {window.location = "/participants";});
+
+$(".mainMenuButt").first().next().on("click", () => {window.location = "/auction";});

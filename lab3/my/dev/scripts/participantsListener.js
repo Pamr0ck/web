@@ -1,4 +1,5 @@
 $(".mainMenuButt").first().on("click", () => {window.location = "/";});
+$(".mainMenuButt").first().next().on("click", () => {window.location = "/auction";});
 
 $(".mainMenuButt").last().on("click", () => {$("#shadowCreate").css("display", "block");});
 

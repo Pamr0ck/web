@@ -4,6 +4,13 @@ const router = express.Router();
 let paintings = require("./media/json/paintings.json");
 const  participants = require("./media/json/participants.json");
 
+function saveConfig() {
+    paintings.participants = participants.participants;
+    fs.writeFile("build/result/config.json", JSON.stringify(paintings), (err) => {
+        if(err) throw err;
+    });
+}
+
 router.get("/", (req, res) => {
     fs.readFile( "build/html/paintings.html", 'utf8', function (err, data) {res.end(data);});
 });
@@ -12,12 +19,32 @@ router.get("/participants", (req, res) => {
     fs.readFile( "build/html/participants.html", 'utf8', function (err, data) {res.end(data);});
 });
 
+router.get("/auction", (req, res) => {
+    fs.readFile( "build/html/auction.html", 'utf8', function (err, data) {res.end(data);});
+});
+
 
 router.get("/paint/:id", (req, res) => {
     let id = req.params.id;
     let value = paintings.paints[parseInt(id)-1];
     res.json(value);
 });
+
+router.get("/date", (req, res) => {
+    let value = paintings.config;
+    res.json(value);
+});
+
+
+router.get("*", (req, res) => {res.status = 404; res.send("Page not found! Error " + res.status);});
+
+router.post("/save", (req, res) => {
+    console.log(req.body)
+    paintings.config = req.body;
+    saveConfig();
+    res.json({message: `save config in file`});
+});
+
 
 router.post("/", (req, res) => {
     let currentElement = parseInt(req.body.id)-1;
@@ -32,12 +59,6 @@ router.post("/", (req, res) => {
     res.json("1");
 });
 
-function saveConfig() {
-    paintings.participants = participants.participants;
-    fs.writeFile("build/result/config.json", JSON.stringify(paintings), (err) => {
-        if(err) throw err;
-    });
-}
 
 
 router.post("/participant", (req, res) => {
@@ -72,7 +93,5 @@ router.put("/:name/:money", (req, res) => {
     }
     res.json({message: `put money`});
 });
-
-router.get("*", (req, res) => {res.status = 404; res.send("Page not found! Error " + res.status);});
 
 module.exports = router;
