@@ -1,9 +1,4 @@
-@paintBorder: #40260b;
-@borderImg: 0px;
-@colorPaint: #ece3d8;
-@colorMenu: #ded2c4;
-@colorHead: #40260b;
-@borderSize: 1px;
+@import "config";
 ul{
   list-style: none;
   display: flex;
@@ -13,25 +8,32 @@ ul{
 body{
   background-color: @colorMenu;
 }
-li {
 
+
+
+.size(@width:100%, @height: auto){
+  width: @width;
+  height: @height;
+}
+
+
+
+
+li {
   background: @colorPaint;
   border: 1px double @paintBorder;
-  width: 100%;
-  height: auto;
+  .size;
   display: block;
   flex-basis: 23%;
   text-align: center;
   margin: 10px;
-  //color: @backdroundMenu;
+
 }
 
 #imgPaintings{
   max-width: calc(80% - 2*@borderImg);
   padding: calc(5%);
-  width: 100%;
-  height: auto;
-  //border: @borderImg groove @backdroundMenu;
+  .size;
   cursor: pointer;
   outline: none;
 }
@@ -50,14 +52,10 @@ p.artist p.name{
 
 #imgInfo{
   float: left;
-  //max-height: calc(100% - 2*@borderImg);
-  //max-width: calc(100% - 2*@borderImg);
   max-height: 600px;
   max-width: 600px;
   padding: calc(1%);
-  width: auto;
-  height: auto;
-  //border: 2px groove @paintBorder;
+  .size(auto);
   cursor: pointer;
   outline: none;
 }
@@ -68,13 +66,9 @@ p.artist p.name{
   border-radius: 30px;
   background-color: @colorPaint;
 }
-//#divmoduleInfo{
-//  float: right;
-//}
 
 #modulInfoClose {
   margin-left: 30px;
-
 }
 
 .infoInput {

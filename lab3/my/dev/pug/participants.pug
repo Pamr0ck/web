@@ -1,21 +1,21 @@
 html
     head
         meta(charset="utf-8")
-        link(rel="stylesheet", type="text/css", href="/public/styles/styles.css")
-        link(rel="stylesheet", type="text/css", href="/public/styles/partners.css")
-        link(rel="shortcut icon", href="/public/images/favicon.png", type="image/png")
+        link(rel="stylesheet", type="text/css", href="/build/css/styles.css")
+        link(rel="stylesheet", type="text/css", href="/build/css/participants.css")
+        //link(rel="shortcut icon", href="/public/images/favicon.png", type="image/png")
         title Аукцион картин
     body
         table#mainMenu
             tr
-                th.mainMenuButton Картины
-                th.mainMenuButton Аукцион
-                th.mainMenuButton Добавить участника
+                th.mainMenuButt Картины
+                th.mainMenuButt Аукцион
+                //th.mainMenuButt Добавить участника
         table#info
             tr#infoTitle
-                td Участник
-                td Доступные средства
-                td(colspan="2") Действия
+                td#th1 Участник
+                td#th2 Доступные средства
+                td#th3(colspan="2") Действия
             each element in participants
                 tr
                     td
@@ -24,6 +24,9 @@ html
                         =element.money
                     td.infoButton.changeButton Изменить запас средств
                     td.infoButton.delButton Удалить участника
+            tr
+                th.mainMenuButt Добавить участника
+
         div#shadowCreate
             div#modulCreate
                 p
@@ -50,5 +53,5 @@ html
                 input.modulButton#modulIsDeleteClose(type="submit", value="Нет")
                 div.invisibility#targetTR
 
-        script(src='/public/scripts/jquery.js')
-        script(src='/public/scripts/partnersListener.js')
+        script(src='/build/scripts/jquery.js')
+        script(src='/build/scripts/participantsListener.js')

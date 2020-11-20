@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 let paintings = require("./media/json/paintings.json");
+const  participants = require("./media/json/participants.json");
 
 router.get("/", (req, res) => {
     fs.readFile( "build/html/paintings.html", 'utf8', function (err, data) {res.end(data);});
@@ -32,12 +33,45 @@ router.post("/", (req, res) => {
 });
 
 function saveConfig() {
-    // paintings.partners = partners.partners;
+    paintings.participants = participants.participants;
     fs.writeFile("build/result/config.json", JSON.stringify(paintings), (err) => {
         if(err) throw err;
     });
 }
 
+
+router.post("/participant", (req, res) => {
+    let element = {};
+    element.name = req.body.name;
+    element.money = req.body.money;
+    participants.participants.push(element);
+    saveConfig();
+    res.json({message: `push partner`});
+});
+
+router.delete("/:name", (req, res) => {
+    console.log(req)
+    let name = req.params.name;
+    for(let i = 0; i <  participants.participants.length; i++) {
+        if( participants.participants[i].name === name) {
+            participants.participants.splice(i, 1);
+            saveConfig();
+            break;
+        }
+    }
+    res.json({message: `delete partner`});
+});
+
+router.put("/:name/:money", (req, res) => {
+    for(element of participants.participants) {
+        if(element.name === req.params.name) {
+            element.money = req.params.money;
+            saveConfig();
+            break;
+        }
+    }
+    res.json({message: `put money`});
+});
 
 router.get("*", (req, res) => {res.status = 404; res.send("Page not found! Error " + res.status);});
 
