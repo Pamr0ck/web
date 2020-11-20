@@ -44,7 +44,7 @@ $("#createMan").on("click", () => {
         return;
     }
     $.post("/participant", {name: nameMan, money: money}).done(() => {
-        $("#info").append($(
+        $("#addUnit").before($(
             `<tr><td>${nameMan}</td><td>${money}</td><td class="infoButton changeButton">Изменить запас средств</td><td class="infoButton delButton">Удалить участника</td></tr>`));
         $("#shadowCreate").css("display", "none");
         console.log('added')
