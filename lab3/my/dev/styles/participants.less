@@ -1,7 +1,10 @@
 @import "config";
 
 @colorTable: #42382b;
-#infoTitle {
+body{
+  background-color: @colorMenu;
+}
+#infoTitle, #addUnit {
   font-size: @fontSizeMenu - 4px;
   background: @backdroundMenu;
   color: @colorMenu;
@@ -16,4 +19,22 @@
   color: @colorMenu;
   cursor: pointer;
   outline: none;
+}
+
+#modulCreate {
+  height: 200px;
+  width: 250px;
+  border-radius: 70px;
+}
+
+#modulMoney {
+  height: 150px;
+  width: 250px;
+  border-radius: 70px;
+}
+
+#modulIsDelete {
+  height: 120px;
+  width: 400px;
+  border-radius: 70px;
 }
