@@ -8,6 +8,7 @@ $("img").on("click", (event)=>{
         $("#infoDes").val(data.des);
         $("#infoPrice").val(data.price);
         $("#infoMin").val(data.minStep);
+        $("#infoMax").val(data.maxStep);
         $("#imainMenuButtonnfoMax").val(data.maxStep);
         $("#imgInfo").attr("src", data.src);
         if(data.is === "нет") $("input[name=activ]").last().prop("checked", true);

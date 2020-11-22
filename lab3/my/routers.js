@@ -1,8 +1,9 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-let paintings = require("./media/json/paintings.json");
-const  participants = require("./media/json/participants.json");
+// let paintings = require("./media/json/paintings.json");
+let paintings = require("./build/result/config.json");
+let  participants = require("./media/json/participants.json");
 
 function saveConfig() {
     paintings.participants = participants.participants;

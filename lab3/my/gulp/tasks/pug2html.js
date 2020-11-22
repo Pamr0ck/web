@@ -1,8 +1,8 @@
 const gulp = require("gulp4");
 const pug = require('gulp-pug');
 const path = require('./path');
-const paintingsJSON = require("../../media/json/paintings.json");
-const participantsJSON = require("../../media/json/participants.json");
+const paintingsJSON = require("../../build/result/config.json");
+const participantsJSON = require("../../build/result/config.json");
 
 module.exports = function pug2html(cb){
     return gulp.src(path.pug.src)
