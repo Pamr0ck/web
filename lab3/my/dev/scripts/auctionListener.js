@@ -11,7 +11,7 @@ $(document).ready(function () {
 
 $(".mainMenuButt").first().on("click", () => {window.location = "/";});
 
-$(".mainMenuButt").first().next().on("click", () => {window.location = "/partners";});
+$(".mainMenuButt").first().next().on("click", () => {window.location = "/participants";});
 
 $(".mainMenuButt").last().on("click", () => {
     console.log('im working');
@@ -21,4 +21,5 @@ $(".mainMenuButt").last().on("click", () => {
     }
     $.post("/save", {beginDate: $("#beginDate").val(), beginTime: $("#beginTime").val(),
         timeout: $("#timeout").val(), interval: $("#interval").val(), pause: $("#pause").val()}).done(() => {console.log("END!");});
+        window.alert("Сохранение успешно");
 });

@@ -8,8 +8,8 @@ html
     body
         table#mainMenu
             tr
-                th.mainMenuButton Картины
-                th.mainMenuButton Участники
+                th.mainMenuButt Картины
+                th.mainMenuButt Участники
                 //th.mainMenuButton Сохранить настройки
         table#info
             caption#tableTitle Настройки аукциона
@@ -34,7 +34,7 @@ html
                 td
                     input.config#pause(type="time")
             tr#savesett
-                th.mainMenuButton(colspan=2) Сохранить настройки
+                th.mainMenuButt(colspan=2) Сохранить настройки
 
         script(src='/build/scripts/jquery.js')
         script(src='/build/scripts/auctionListener.js')
