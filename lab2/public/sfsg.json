@@ -5,7 +5,7 @@
       "id": 1,
       "author": "J. R. R. Tolkien",
       "name": "The Lord of the Rings. The Fellowship of the Ring",
-      "publishedDate": "20-09-2020",
+      "publishedDate": "2020-09-20",
       "isInLibrary": "Yes",
       "readerName": "",
       "expectedDate": ""
@@ -14,7 +14,7 @@
       "id": 2,
       "author": "J. R. R. Tolkien",
       "name": "The Lord of the Rings. The Two Towers",
-      "publishedDate": "20-09-2020",
+      "publishedDate": "2020-09-20",
       "isInLibrary": "Yes",
       "readerName": "",
       "expectedDate": ""
@@ -23,7 +23,7 @@
       "id": 3,
       "author": "J. R. R. Tolkien",
       "name": "The Lord of the Rings. The Return of the King",
-      "publishedDate": "20-09-2020",
+      "publishedDate": "2020-09-20",
       "isInLibrary": "No",
       "readerName": "Alsat",
       "expectedDate": "2020-10-09"
@@ -32,7 +32,7 @@
       "id": 4,
       "author": "A. Danilov",
       "name": "The sense of yourself ",
-      "publishedDate": "20-09-2020",
+      "publishedDate": "2020-09-20",
       "isInLibrary": "Yes",
       "readerName": "",
       "expectedDate": ""
@@ -41,7 +41,7 @@
       "id": 5,
       "author": "F. Scott Fitzgerald",
       "name": "The Great Gatsby",
-      "publishedDate": "20-11-2020",
+      "publishedDate": "2020-09-20",
       "isInLibrary": "Yes",
       "readerName": "",
       "expectedDate": ""
@@ -50,7 +50,7 @@
       "id": 6,
       "author": "Leo Tolstoy",
       "name": "Anna Karenina",
-      "publishedDate": "22-09-2000",
+      "publishedDate": "2000-09-22",
       "isInLibrary": "Yes",
       "readerName": "",
       "expectedDate": ""

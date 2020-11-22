@@ -2,14 +2,6 @@ html,body{
     height: 100%;
     margin: 0;
 }
-/*делаем чёрный фон и выравниваем всё по центру*/
-body {
-    /*background: black;*/
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-}
-/*толщина холста — 1 пиксель, белый цвет*/
 
 .game{
     z-index: 4;
@@ -66,8 +58,6 @@ body {
     -webkit-text-stroke-color: black;
     width: auto;
 
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
     height: 155px;
     font-size: 4em;
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, sans-serif;

@@ -1,8 +1,6 @@
 //todo
 // рестарт
-// рекроды
 // пауза
-// счет за фигуры
 // gitignore
 
 // получаем доступ к холсту
@@ -24,7 +22,7 @@ for (let row = -2; row < ROW; row++){
     }
 }
 
-let difficult = 35;
+let difficult = 20;
 let score = 0;
 let lvl = 1;
 let koef = 0.9;
@@ -98,7 +96,7 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-//создаем псевдослучайную очередь из фигур, каждая по одному разу???
+//создаем псевдослучайную очередь из фигур, каждая по одному разу
 function  generateSequence(){
     const sequence = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
     // const sequence = ['I'];
