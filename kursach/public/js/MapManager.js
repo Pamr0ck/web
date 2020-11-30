@@ -51,7 +51,7 @@ class MapManager{
                 }
             };
 
-            img.src = 'http://localhost:3000/'+ this.mapData.tilesets[i].image; // path to img
+            img.src = 'http://localhost:3000/levels/'+ this.mapData.tilesets[i].image; // path to img
             let tileset = this.mapData.tilesets[i];  // path to tilset
             let ts = {
                 firstgrid: tileset.firstgrid, // начало нумерации
