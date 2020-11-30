@@ -1,3 +1,6 @@
+let canvas = document.getElementById("canvasid");
+let ctx = canvas.getContext("2d");
+
 class MapManager{
     view={x: 0, y: 0, w: 900, h: 900}
 
@@ -13,19 +16,22 @@ class MapManager{
     jsonLoaded = false;
     gameManager = null;
 
-    loadMap(path){
+    constructor(){//path) {
         let self = this
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function (){
-            if(request.readyState === 4 && request.status === 200){
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
                 self.parseMap(request.responseText);
             }
-        }
+        };
         request.open("GET", path, true);
         request.send();
     }
+    // loadMap(path){
+    //
+    // }
 
-    parseMap(titlesJSON){
+    parseMap(tilesJSON){
         this.mapData = JSON.parse(tilesJSON);
         this.xCount = this.mapData.width;
         this.yCount = this.mapData.height;
@@ -136,12 +142,70 @@ class MapManager{
         }
         return true;
     }
+
+    parseEntities() {
+        let self = this;
+        if (!self.imgLoaded || !self.jsonLoaded) {
+            setTimeout(function () {
+                self.parseEntities();
+            }, 100);
+        } else {
+            for (let j = 0; j < this.mapData.layers.length; j++) {
+                if (this.mapData.layers[j].type === "objectgroup") {
+                    let entities = this.mapData.layers[j];
+                    for (let i = 0; i < entities.objects.length; i++) {
+                        let e = entities.objects[i];
+                        console.log(`TYPE: ${e.type}`);
+                        let obj = this.gameManager.entityFactory(
+                            e.type,
+                            e.name,
+                            e.x,
+                            e.y
+                        );
+
+                        if (obj !== null) {
+                            this.gameManager.entities.push(obj);
+                            if (obj.name === "player") {
+                                // console.log("Got Player in map!");
+                                this.gameManager.initPlayer(obj);
+                            }
+                        } else {
+                            console.error("Invalid object in map!");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    getTilesetIdx(x, y) {
+        let wX = x;
+        let wY = y;
+        let idx =
+            Math.floor(wY / this.tSize.y) * this.xCount +
+            Math.floor(wX / this.tSize.x);
+        return this.tLayer.data[idx];
+    }
+
+    centerAt(x, y) {
+        if (x < this.view.w / 2) {
+            this.view.x = 0;
+        } else if (x > this.mapSize.x - this.view.w / 2) {
+            this.view.x = this.mapSize.x - this.view.w;
+        } else {
+            this.view.x = x - this.view.w / 2;
+        }
+
+        if (y < this.view.h / 2) {
+            this.view.y = 0;
+        } else if (y > this.mapSize.y - this.view.h / 2) {
+            this.view.y = this.mapSize.y - this.view.h;
+        } else {
+            this.view.y = y - this.view.h / 2;
+        }
+    }
 }
 
-var canvas = document.getElementById("canvasid");
-var ctx = canvas.getContext("2d");
-var image = new Image();
-
-mapManager = MapManager()
-mapManager.loadMap("../levels/lvl1.json");
+mapManager = new MapManager("../levels/lvl1.json");
+// mapManager.loadMap("../levels/lvl1.json");
 mapManager.draw(ctx);
