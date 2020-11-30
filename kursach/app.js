@@ -2,12 +2,14 @@
 
 
 //todo
+// 0.0 empty blocks
 // 0. music
 // 1.stand
 // 2.fire mobs
 // 3. firebomb to laszer
 // 4. animation
 // 5. routes index corgi
+// 6. dell in assets levels
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");

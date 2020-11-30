@@ -1,6 +1,3 @@
-let canvas = document.getElementById("canvasid");
-let ctx = canvas.getContext("2d");
-
 class MapManager{
     view={x: 0, y: 0, w: 900, h: 900}
 
@@ -16,7 +13,10 @@ class MapManager{
     jsonLoaded = false;
     gameManager = null;
 
-    constructor(){//path) {
+    constructor(path, gameManager) {
+        this.gameManager = gameManager;
+        this.view.h = this.gameManager.canvas.height;
+        this.view.w = this.gameManager.canvas.width;
         let self = this
         let request = new XMLHttpRequest();
         request.onreadystatechange = function () {
@@ -24,7 +24,7 @@ class MapManager{
                 self.parseMap(request.responseText);
             }
         };
-        request.open("GET", path, true);
+        request.open("GET", 'http://localhost:3000/' + path, true);
         request.send();
     }
     // loadMap(path){
@@ -51,7 +51,7 @@ class MapManager{
                 }
             };
 
-            img.src = this.mapData.tilesets[i].image; // path to img
+            img.src = 'http://localhost:3000/'+ this.mapData.tilesets[i].image; // path to img
             let tileset = this.mapData.tilesets[i];  // path to tilset
             let ts = {
                 firstgrid: tileset.firstgrid, // начало нумерации
@@ -64,6 +64,7 @@ class MapManager{
         }
         this.jsonLoaded = true;
     }
+
     draw(ctx){
         let self = this;
         if(!self.imgLoaded||!self.jsonLoaded){
@@ -134,13 +135,11 @@ class MapManager{
         return null;
     }
     isVisible(x, y, width, height){
-        if (x + width < this.view.x ||
+        return !(x + width < this.view.x ||
             y + height < this.view.y ||
             x > this.view.x + this.view.w ||
-            y > this.view.y + this.view.h){
-            return  false;
-        }
-        return true;
+            y > this.view.y + this.view.h);
+
     }
 
     parseEntities() {
@@ -205,7 +204,3 @@ class MapManager{
         }
     }
 }
-
-// mapManager = new MapManager("../levels/lvl1.json");
-// // mapManager.loadMap("../levels/lvl1.json");
-// mapManager.draw(ctx);
