@@ -17,7 +17,7 @@ class Fireball extends Entity {
         let self = this;
         let spriteCounter = 0;
         this.rotateInterval = setInterval(function () {
-            spriteCounter++;
+            spriteCounter = 0;
             if (spriteCounter === 0) {
                 self.spriteType = "Fireball";
             } else {

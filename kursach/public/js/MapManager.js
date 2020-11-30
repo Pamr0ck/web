@@ -63,12 +63,17 @@ class MapManager {
         this.jsonLoaded = true;
     }
 
-    draw(ctx){
+    /**
+     * Draw the map in context
+     * @param {CanvasRenderingContext2D} ctx
+     */
+    draw(ctx) {
+        // console.log("Draw from MapManager was called");
         let self = this;
         if (!self.imgLoaded || !self.jsonLoaded) {
             setTimeout(function () {
                 self.draw(ctx);
-            }, 100);
+            }, 100); //try again by 100ms timeout
         } else {
             if (this.tLayer === null) {
                 for (let id = 0; id < this.mapData.layers.length; id++) {
@@ -79,18 +84,21 @@ class MapManager {
                     }
                 }
             }
-            for (let  i = 0; i < this.tLayer.data.length; i++){ // проход по карте
-                if(this.tLayer.data[i] !== 0){ // нет данных - пропускаем
-                    let tile = this.getTile(this.tLayer.data[i]); // получаем блок по индексу
-                    let pX = (i%this.xCount) * this.tSize.x; // x в пикселах
-                    let pY = Math.floor(i/this.xCount) * this.tSize.y;
+            //ctx.clearRect(0,0,900,900);
+            for (let i = 0; i < this.tLayer.data.length; i++) {
+                if (this.tLayer.data[i] !== 0) {
+                    let tile = this.getTile(this.tLayer.data[i]);
+                    let pX = (i % this.xCount) * this.tSize.x;
+                    let pY = Math.floor(i / this.xCount) * this.tSize.y;
 
                     if (!this.isVisible(pX, pY, this.tSize.x, this.tSize.y)) {
                         continue;
                     }
+
                     pX -= this.view.x;
                     pY -= this.view.y;
 
+                    // console.log("drawImage from MapMager was called");
                     ctx.drawImage(
                         tile.img,
                         tile.px,
@@ -106,22 +114,6 @@ class MapManager {
             }
         }
     }
-    getTile(tileIndex){
-        let self = this;
-        let tile = {
-            img: null,
-            px: 0,
-            py: 0
-        };
-        let tileset = this.getTileset(tileIndex);
-        tile.img = tileset.image;
-        let id = tileIndex - tileset.firstgrid;
-        let x = id % tileset.xCount;
-        let y = Math. floor(id/ tileset.xCount);
-        tile.px = x * self.tSize.x;
-        tile.py = y * self.tSize.y;
-        return tile;
-    }
 
     getTileset(tileIndex) {
         let self = this;
@@ -131,13 +123,6 @@ class MapManager {
             }
         }
         return null;
-    }
-    isVisible(x, y, width, height){
-        return !(x + width < this.view.x ||
-            y + height < this.view.y ||
-            x > this.view.x + this.view.w ||
-            y > this.view.y + this.view.h);
-
     }
 
     parseEntities() {
@@ -175,6 +160,13 @@ class MapManager {
         }
     }
 
+    /**
+     * Calculate index of block in data array (idx),
+     * based on blocks sizes (tSize.x, tSize.y) and
+     * number of horizontal blocks.
+     * @param {number} x
+     * @param {number} y
+     */
     getTilesetIdx(x, y) {
         let wX = x;
         let wY = y;
@@ -200,5 +192,31 @@ class MapManager {
         } else {
             this.view.y = y - this.view.h / 2;
         }
+    }
+
+    getTile(tileIndex) {
+        let self = this;
+        let tile = {
+            img: null,
+            px: 0,
+            py: 0,
+        };
+        let tileset = this.getTileset(tileIndex);
+        tile.img = tileset.image;
+        let id = tileIndex - tileset.firstgid;
+        let x = id % tileset.xCount;
+        let y = Math.floor(id / tileset.xCount);
+        tile.px = x * self.tSize.x;
+        tile.py = y * self.tSize.y;
+        return tile;
+    }
+
+    isVisible(x, y, width, height) {
+        return !(
+            x + width < this.view.x ||
+            y + height < this.view.y ||
+            x > this.view.x + this.view.w ||
+            y > this.view.y + this.view.h
+        );
     }
 }
