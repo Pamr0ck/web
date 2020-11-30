@@ -1,5 +1,5 @@
 class MapManager {
-    view={x: 0, y: 0, w: 900, h: 900};
+    view = { x: 0, y: 0, w: 900, h: 900 };
 
     mapData = null;
     tLayer = null; //  Link for a map blocks
@@ -65,15 +65,15 @@ class MapManager {
 
     draw(ctx){
         let self = this;
-        if(!self.imgLoaded||!self.jsonLoaded){
-            setTimeout(function (){
+        if (!self.imgLoaded || !self.jsonLoaded) {
+            setTimeout(function () {
                 self.draw(ctx);
             }, 100);
         } else {
-            if(this.tLayer === null) {
-                for (let id = 0; id < this.mapData.layers.length; id++){
+            if (this.tLayer === null) {
+                for (let id = 0; id < this.mapData.layers.length; id++) {
                     let layer = this.mapData.layers[id];
-                    if(layer.type === "tilelayer"){
+                    if (layer.type === "tilelayer") {
                         this.tLayer = layer;
                         break;
                     }
@@ -85,7 +85,7 @@ class MapManager {
                     let pX = (i%this.xCount) * this.tSize.x; // x в пикселах
                     let pY = Math.floor(i/this.xCount) * this.tSize.y;
 
-                    if(!this.isVisible(pX, pY, this.tSize.x, this.tSize.y)){
+                    if (!this.isVisible(pX, pY, this.tSize.x, this.tSize.y)) {
                         continue;
                     }
                     pX -= this.view.x;
@@ -123,10 +123,10 @@ class MapManager {
         return tile;
     }
 
-    getTileset(tileIndex){
+    getTileset(tileIndex) {
         let self = this;
-        for (let i = self.tilesets.length - 1; i >= 0; i--){
-            if (self.tilesets[i].firstgrid <= tileIndex){
+        for (let i = self.tilesets.length - 1; i >= 0; i--) {
+            if (self.tilesets[i].firstgid <= tileIndex) {
                 return self.tilesets[i];
             }
         }
