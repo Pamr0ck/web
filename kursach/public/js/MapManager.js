@@ -1,4 +1,4 @@
-class MapManager{
+class MapManager {
     view={x: 0, y: 0, w: 900, h: 900};
 
     mapData = null;
@@ -27,11 +27,8 @@ class MapManager{
         request.open("GET", 'http://localhost:3000/' + path, true);
         request.send();
     }
-    // loadMap(path){
-    //
-    // }
 
-    parseMap(tilesJSON){
+    parseMap(tilesJSON) {
         this.mapData = JSON.parse(tilesJSON);
         this.xCount = this.mapData.width;
         this.yCount = this.mapData.height;
@@ -41,24 +38,25 @@ class MapManager{
         this.mapSize.y = this.yCount * this.tSize.y;
 
         self = this;
-
-        for (let i = 0; i < this.mapData.tilesets.length; i++){
+        for (let i = 0; i < this.mapData.tilesets.length; i++) {
             let img = new Image();
-            img.onload = function (){
+            img.onload = function () {
                 self.imgLoadCount++;
-                if(self.imgLoadCount === self.mapData.tilesets.length){
+                if (self.imgLoadCount === self.mapData.tilesets.length) {
                     self.imgLoaded = true;
                 }
             };
 
-            img.src = 'http://localhost:3000/levels/'+ this.mapData.tilesets[i].image; // path to img
-            let tileset = this.mapData.tilesets[i];  // path to tilset
+            // Path to the img with tileset
+            img.src = 'http://localhost:3000/levels/' + this.mapData.tilesets[i].image;
+            let tileset = this.mapData.tilesets[i];
+
             let ts = {
-                firstgrid: tileset.firstgrid, // начало нумерации
-                imag: img, //рисунок
+                firstgid: tileset.firstgid,
+                image: img,
                 name: tileset.name,
-                xCount:Math.floor(tileset.imagewidth/self.tSize.x),
-                yCount:Math.floor(tileset.imageheigh/self.tSize.y)
+                xCount: Math.floor(tileset.imagewidth / self.tSize.x),
+                yCount: Math.floor(tileset.imageheight / self.tSize.y),
             };
             this.tilesets.push(ts);
         }
