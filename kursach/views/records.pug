@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        link(href="/css/style.css" rel="stylesheet" type="text/css")
+    body
+        div(id="records-info")
+            h1
+                | Таблица рекордов
+            table(id="records-table")
+                thead
+                    tr
+                        th(width="200px")
+                            | Имя
+                        th(width="200px")
+                            | Очки
+                for record in recordsPairs
+                    tr
+                        td #{record[0]}
+                        td #{record[1]}
+            button.btn.animated-btn(onclick="window.location.href = '/'") Вернуться в игру
