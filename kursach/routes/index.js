@@ -3,7 +3,7 @@ var router = express.Router();
 let peopleRecords = require("../data/records");
 
 router.get("/", function (req, res, next) {
-    res.render("index", { title: "Corgi" });
+    res.render("index", { title: "KIBORG" });
 });
 
 router.put("/", function (req, res, next) {

@@ -30,9 +30,9 @@
 }
 
 .animated-btn {
-    border-color: #caa718;
-    color: #caa718;
-    background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+    border-color: #ca7418;
+    color: #ca8f18;
+    background-image: linear-gradient(45deg, #f1840f 50%, transparent 50%);
     background-position: 100%;
     background-size: 400%;
     transition: background 300ms ease-in-out;

@@ -4,13 +4,13 @@
 
 body {
     /*font-family: 14px 'Roboto', Helvetica, Arial, sans-serif;*/
-    background-color: #c2d2b2;
+    background-color: #c48e54;
 }
 
 #interact-with-page {
     width: 1208px;
     height: 820px;
-    background-color: #edeadf;
+    background-color: #dedad3;
     z-index: 15;
     position: absolute;
     border: #ccd4c2
@@ -27,7 +27,7 @@ body {
 }
 
 #start-logo-img {
-    width: 400px;
+    width: 600px;
     height: 400px;
 }
 

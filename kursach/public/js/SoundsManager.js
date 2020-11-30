@@ -47,13 +47,13 @@ class SoundsManager {
 
             case "next level":
                 this.nextLevelSound.currentTime = 0;
-                this.nextLevelSound.volume = 0.3;
+                this.nextLevelSound.volume = 0.5;
                 this.nextLevelSound.play();
                 break;
 
             case "bonus":
                 this.bonusSound.currentTime = 0;
-                this.bonusSound.volume = 0.5;
+                this.bonusSound.volume = 1;
                 this.bonusSound.play();
                 break;
 

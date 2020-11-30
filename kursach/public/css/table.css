@@ -1,7 +1,8 @@
 #records-info {
     font-size: xx-large;
-    background-color: #c2d2b2;
-    font-family: 'Montserrat', 'Roboto', Helvetica, sans-serif;
+    background-color: #f3e1b9;
+    /*font-family: 'Montserrat', 'Roboto', Helvetica, sans-serif;*/
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
     text-align: center;
 }
 
@@ -17,12 +18,12 @@
 }
 
 #records-table td {
-    background-color: #eee;
+    background-color: #c29a57;
     border: none;
 }
 
 #records-table th {
-    background-color: #4919ce;
+    background-color: #90480c;
     color: #fff;
     border: none;
 }
