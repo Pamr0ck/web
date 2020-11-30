@@ -1,4 +1,4 @@
-const EMPTY_SPACE_ID = 8;
+const EMPTY_SPACE_ID = 1;
 const LAVA_TILE_ID = 4;
 const EXIT_TILE_ID_1 = 2;
 

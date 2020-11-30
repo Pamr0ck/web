@@ -2,7 +2,7 @@
 
 
 //todo
-// 0.0 empty blocks
+//
 // 0. music
 // 1.stand
 // 2.fire mobs
