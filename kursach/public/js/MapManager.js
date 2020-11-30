@@ -1,5 +1,5 @@
 class MapManager{
-    view={x: 0, y: 0, w: 900, h: 900}
+    view={x: 0, y: 0, w: 900, h: 900};
 
     mapData = null;
     tLayer = null; //  Link for a map blocks
@@ -17,7 +17,7 @@ class MapManager{
         this.gameManager = gameManager;
         this.view.h = this.gameManager.canvas.height;
         this.view.w = this.gameManager.canvas.width;
-        let self = this
+        let self = this;
         let request = new XMLHttpRequest();
         request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
