@@ -46,7 +46,7 @@ class PhysicManager {
             }
         }
 
-        let multiplierY = obj.speed;
+        let multiplierY = obj.speed; // gravity
 
         if (obj.impulse !== undefined) {
             // It's impossible to have impuls > 10 in world without any repulsive mechanisms

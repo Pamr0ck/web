@@ -215,11 +215,11 @@ class GameManager {
         switch (this.currentLevel) {
             case 0:
                 description =
-                    "Это первый уровень. Он должен быть несложным :)";
+                    "Приветствую, RD-D3! Твоя миссия выжить и уйти.";
                 break;
             case 1:
                 description =
-                    "Второй уровень. Тут можно получить больше очков. Удачи ;)";
+                    "Хорошая работа! Теперь вниз!!!!";
                 break;
         }
         // tests with start
@@ -235,7 +235,7 @@ class GameManager {
                         <br/>
                         <br/>
                         <div style="font-size: large">${description}</div>`,
-                    1000
+                    1500
                 );
                 self.playInterval = setInterval(function () {
                     self.update();
