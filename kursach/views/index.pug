@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        link(href="/css/style.css" rel="stylesheet" type="text/css")
+    body
+        div(id="game-block")
+            div(id="interact-with-page")
+                div(id="logo-block")
+                    div
+                        |КИБОРГ УБИЙЦА
+                    div
+                        img(id="start-logo-img" src="img/logo.png")
+                    div
+                        button.btn.animated-btn(onclick="startGame();")
+                            |Играть
+            div(id="game-info-block")
+                div(id="game-info")
+                div(id="game-info-login")
+            div(id="hud")
+                span Текущий счёт:&nbsp;
+                span(id="score") 0
+            canvas(id="gameCanvas" width="1200" height="768")
+        script(src="/js/SoundsManager.js")
+        script(src="/js/GameManager.js")
+        script(src="/js/MapManager.js")
+        script(src="/js/PhysicManager.js")
+        script(src="/js/SpriteManager.js")
+        script(src="/js/Entities/Entity.js")
+        script(src="/js/Entities/Enemy.js")
+        script(src="/js/Entities/BonusKey.js")
+        script(src="/js/Entities/Fireball.js")
+        script(src="/js/Entities/Player.js")
+        script(src="/js/EventsManager.js")
+        script(src="/js/main.js" defer)

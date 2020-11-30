@@ -22,6 +22,7 @@
     <list default="true" id="3b2cd7e9-c532-4740-b7a9-0c16e74b8d65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/records.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/records.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/records.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/records.js" afterDir="false" />
@@ -89,6 +90,9 @@
       <workItem from="1600446676775" duration="12767000" />
       <workItem from="1600608711149" duration="885000" />
       <workItem from="1600631808207" duration="1008000" />
+      <workItem from="1600680935139" duration="578000" />
+      <workItem from="1600686774021" duration="745000" />
+      <workItem from="1601904096608" duration="50000" />
     </task>
     <servers />
   </component>
@@ -113,10 +117,10 @@
     </state>
     <state x="0" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1600452519010" />
     <state x="0" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1600000472008" />
-    <state x="1546" y="311" width="374" height="491" key="FileChooserDialogImpl" timestamp="1600115379141">
+    <state x="1546" y="311" width="374" height="491" key="FileChooserDialogImpl" timestamp="1601904142418">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="1546" y="311" width="374" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1600115379141" />
+    <state x="1546" y="311" width="374" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1601904142418" />
     <state x="3143" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.3840.1053@0.27.3840.1053" timestamp="1600093252839" />
     <state x="0" y="175" width="1920" height="737" key="SettingsEditor" timestamp="1600104610596">
       <screen x="0" y="27" width="3840" height="1053" />

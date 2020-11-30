@@ -1,11 +1,3 @@
-// todo list
-function goToGame() {
-    console.log("go to game");
-    setTimeout(()=>{
-        window.location = "main.html";
-    }, 0);
-
-}
 const table = document.getElementById('records');
 let records = JSON.parse(localStorage["tetris.records"]);
 records.sort((a,b)=>{
