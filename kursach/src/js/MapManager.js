@@ -206,6 +206,6 @@ class MapManager{
     }
 }
 
-mapManager = new MapManager("../levels/lvl1.json");
-// mapManager.loadMap("../levels/lvl1.json");
-mapManager.draw(ctx);
+// mapManager = new MapManager("../levels/lvl1.json");
+// // mapManager.loadMap("../levels/lvl1.json");
+// mapManager.draw(ctx);
