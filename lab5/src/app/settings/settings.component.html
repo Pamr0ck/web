@@ -1,0 +1,22 @@
+<h1>Настройки</h1>
+
+<div>
+  <label>Дата начала (дд.мм.ггг чч.мм):
+    <input type="date" [(ngModel)]="settings.startDate" placeholder="date"/>
+    <input type="time" [(ngModel)]="settings.startTime" placeholder="time"/>
+  </label>
+</div>
+<div>
+  <label>Дата завершения (дд.мм.ггг чч.мм):
+    <input type="date" [(ngModel)]="settings.endDate" placeholder="date"/>
+    <input type="time" [(ngModel)]="settings.endTime" placeholder="time"/>
+  </label>
+</div>
+<!-- <br> -->
+<div>
+  <label>Интервал мм:
+    <input type="number" [(ngModel)]="settings.interval" placeholder=""/>
+  </label>
+</div>
+<button (click)="saveSettings()" class="btn btn-success">Сохранить</button>
+<div>{{statusMessage}}</div>
