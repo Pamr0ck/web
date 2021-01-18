@@ -1,0 +1,11 @@
+#content {
+    width: 35%;
+    height: 28%;
+    display: inline-block;
+    margin-top: 15%;
+    font-size: large;
+    color: #ffffff;
+    font-weight: bold;
+
+    background: #3d3644;
+}

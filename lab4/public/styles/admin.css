@@ -1,0 +1,22 @@
+.tabs {
+    display: inline-block;
+    width: 57%;
+    float: left;
+    margin: 1%;
+}
+
+.portlet {
+    display: inline-block;
+    width: 39%;
+    float: left;
+    margin: 1%;
+}
+
+.startAUCTION{
+    display: inline-block;
+    width: 39%;
+    float: left;
+    padding: 5px;
+    margin: 1%;
+    height: 30px;
+}

@@ -1,0 +1,68 @@
+<h1>Список акций</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addStock()" />
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <td>Id</td>
+    <td>Стартовая цена</td>
+    <td>Закон распределения</td>
+    <td>Максимальное значение для изменения</td>
+    <td>Стоимость одной акции</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let stock of stocks">
+    <ng-template [ngTemplateOutlet]="loadTemplate(stock)"
+                 [ngTemplateOutletContext]="{ $implicit: stock}">
+    </ng-template>
+  </tr>
+  </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-stock>
+  <td>{{stock.id}}</td>
+  <td>{{stock.startingPrice}}</td>
+  <td>{{stock.type}}</td>
+  <td>{{stock.maxChangeValue}}</td>
+  <td>{{stock.quantity}}</td>
+  <td>
+    <input type="button" value="Изменить" class="btn btn-default" (click)="editStock(stock)" />
+  </td>
+  <td>
+    <input type="button" value="Удалить" (click)="deleteStock(stock)" class="btn btn-danger" />
+  </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+  <td>
+    <input type="number" [(ngModel)]="editedStock.id" readonly disabled class="form-control" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="editedStock.startingPrice" class="form-control" />
+  </td>
+  <td>
+<!--    <input type="number" [(ngModel)]="editedStock.type" class="form-control" />-->
+    <select [(ngModel)]="editedStock.type" class="form-control">
+      <option> Равномерный  </option>
+      <option> Нормальный   </option>
+    </select>
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="editedStock.maxChangeValue" class="form-control" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="editedStock.quantity" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="saveStock()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </td>
+</ng-template>

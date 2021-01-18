@@ -1,0 +1,50 @@
+html
+    head
+        meta(charset="utf-8")
+        link(rel="stylesheet", type="text/css", href="/public/styles/w3.css")
+        link(rel="stylesheet", type="text/css", href="/public/styles/jquery-ui.css")
+        link(rel="stylesheet", type="text/css", href="/public/styles/all.css")
+        link(rel="stylesheet", type="text/css", href="/public/styles/user.css")
+        link(rel="shortcut icon", href="/public/images/favicon.png", type="image/png")
+        script(src='/public/scripts/jquery.js')
+        script(src='/public/scripts/jquery-ui.js')
+        script(src='/public/scripts/user.js')
+        script(src='http://localhost:3030/socket.io/socket.io.js')
+        title Участие в аукционе картин
+    body
+        div.w3-container.w3-margin
+            div.w3-container
+                div.portlet.w3-margin#balance
+                    div.portlet-header  Баланс
+                    div.portlet-content.w3-cell-row
+                        div#name.w3-container.w3-cell
+                            =name
+                        div#money.w3-container.w3-cell
+                            =money
+                div.portlet.w3-margin#purch
+                    div.portlet-header  Покупки
+                    div.portlet-content
+                        ul#purchases
+                div.portlet.w3-margin#long
+                    div.portlet-header  Длительность аукциона
+                    div.portlet-content
+                        div#time
+            div#currentArt.w3-container.w3-margin.border
+                div#img
+                    img.w3-border.w3-border-black(src="/public/images/start.jpg", width="500", height="500")
+                div#titleArt
+                    div#nameArt.w3-margin
+                    div#price
+                div.w3-margin
+                    div#slider.w3-margin
+                        div#handle.ui-slider-handle.notOutline
+                    div.w3-margin
+                        div#newPriceButton.w3-button.w3-round-small.notOutline.buttonTheme.w3-margin Предложить новую цену
+                        div#newPrice.w3-margin
+                    div#count.invisibility
+                        =count
+            div.w3-container
+                div.portlet.w3-margin#infoAuction
+                    div.portlet-header  Ход торгов
+                    div.portlet-content
+                        ul#data
